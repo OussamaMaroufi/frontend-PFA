@@ -4,23 +4,35 @@ import { Page } from '../components';
 import { MessageService } from '../services';
 import store from '../store'
 
-let userId ;
+let userInfo =  store.getState().auth
+let userId = userInfo.user.id
+let socket = new WebSocket(
+  "ws://127.0.0.1:8000/" + `ws/users/3/chat/`
+);
 function ChatroomPage() {
 
 
 
-  const userInfo = store.getState().auth
-   userId = userInfo.user.id
-  console.log(userId);
-  //  Instanciate socket
-  if(userId){
-    let socket = new WebSocket(
-  "ws://127.0.0.1:8000/" + `ws/users/${userId}/chat/`
-);
-}
+  // const userInfo = store.getState().auth
+  //  userId = userInfo.user.id
+  // console.log(userId);
 
 
 
+  socket.onmessage = (event)=>{
+    const data = JSON.parse(event.data)
+    if(threadId==data.threadId){
+      if(data.action == "message"){
+       setMessages((prev)=>[...prev,data.message])
+      }
+    }
+    
+  }
+
+
+
+  let userInfo =  store.getState().auth
+  let userId = userInfo.user.id
 
 
   const [messages, setMessages] = useState([])
@@ -33,8 +45,14 @@ function ChatroomPage() {
   const messageSubmitHandler = (event) => {
     event.preventDefault()
     if (inputMessage) {
-      console.log(inputMessage);
-      //socket.send
+      socket.send(
+        JSON.stringify({
+          action:'message',
+          message:inputMessage,
+          user:userId,
+          threadId:threadId
+        })
+      )
 
     }
     setInputMessage("")
