@@ -1,0 +1,76 @@
+.searchitem {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.searchitem__link {
+  width: 100%;
+}
+
+.searchitem__info {
+  flex: 1;
+  margin-top: 1.2rem;
+}
+
+.searchitem__info-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.searchitem__info-top-text {
+  flex: 1;
+}
+
+.article-item {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.article-item__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-link {
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.category-link:hover {
+  text-decoration: underline;
+}
+
+.category-link--active {
+  color: var(--color-main);
+  font-weight: 900;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .search--item--info-1-top-text {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Refactors */
+
+.searchItem__top {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchItem__bottom {
+  margin-bottom: 1rem;
+}

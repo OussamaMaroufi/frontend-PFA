@@ -1,0 +1,66 @@
+#search-form {
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 10rem;
+  padding: 0.9rem 1.5rem;
+  background-color: var(--color-sub-light);
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dark-theme #search-form {
+  color: var(--color-text);
+  background-color: var(--color-sub);
+}
+
+#search-form input {
+  color: var(--color-light);
+  background-color: transparent;
+  outline: none;
+  border: 2px solid transparent;
+  width: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.dark-theme #search-form > input {
+  color: var(--color-text);
+}
+
+#search-form:focus-within {
+  outline: none;
+  border: 2px solid var(--color-main);
+}
+
+#search-form input::placeholder {
+  color: var(--color-gray);
+}
+
+.shortcut__Text {
+  font-size: 8px;
+}
+
+.shortcut__Key {
+  font-size: 10px;
+  background-color: #303030;
+  color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .shortcut__Text {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shortcut__Text {
+    display: none;
+  }
+}
