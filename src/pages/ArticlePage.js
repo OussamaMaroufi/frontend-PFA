@@ -6,11 +6,13 @@ import { ArticlesCard, Page } from '../components';
 import { articles } from '../data';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArticle } from '../actions/articleActions';
+import createDOMPurify from "dompurify"
 
 const ArticlePage = ({ match }) => {
   let article = useSelector((state) => state.articlePage.article);
   let relatedArticles = articles.filter((d) => d.slug !== match.params.slug);
   const dispatch = useDispatch();
+  const DOMPurify = createDOMPurify(window);
 
   useEffect(() => {
     dispatch(getArticle(match.params.slug));
@@ -30,7 +32,7 @@ const ArticlePage = ({ match }) => {
               ))} */}
             </div>
             <div className="line-break"></div>
-            <p>{article.content}</p>
+            <p dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(article.content)}}></p>
           </div>
         </div>
       </section>

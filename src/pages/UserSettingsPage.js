@@ -179,6 +179,28 @@ function UserSettingsPage() {
                 </div>
               </div>
             </div>
+            <div className="settings-update">
+              <div className="settings-update__title">
+                <span>Resume</span>
+              </div>
+              <div className="settings-update__avatar">
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="profile-pic"
+                  name="profile-pic"
+                  onChange={handleFileChange}
+                  ref={inputRef}
+                />
+                <Button
+                  text="Upload Your Resume"
+                  iconName="upload"
+                />
+                <br />
+                <br />
+                <br />
+              </div>
+            </div>
 
             <div className="settings-update">
               <div className="settings-update__title">

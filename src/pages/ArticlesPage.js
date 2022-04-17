@@ -6,12 +6,15 @@ import { resetSearchArticles, searchArticles } from '../actions/articleActions';
 import { Avatar, Button } from '../common';
 import { getApiUrl } from '../services/config';
 import { Link } from 'react-router-dom';
+import { ArticlePage } from '.';
 
 const ArticlesPage = () => {
   const { data, loading } = useSelector((state) => state.articleSearchList);
   const dispatch = useDispatch();
 
   const { results: articles } = data;
+
+  console.log("Articles ", articles);
 
   useEffect(() => {
     dispatch(searchArticles());
@@ -30,6 +33,7 @@ const ArticlesPage = () => {
     <Page>
       <section>
         {articles.map((article) => (
+
           <div key={article.id} className="card">
             <div className="card__body">
               <div className="article-item">
@@ -38,13 +42,18 @@ const ArticlesPage = () => {
                   <div>
                     <strong>{article.title}</strong>
                   </div>
+                  <p>{article.content}</p>
                 </Link>
+
                 <Link to={`/profile/${article.user.username}`}>
                   <div className="article-item__profile">
                     <Avatar src={getApiUrl(article.user.profile_pic)} />
                     {article.user.username}
                   </div>
                 </Link>
+
+
+
               </div>
             </div>
           </div>
