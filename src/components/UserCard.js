@@ -57,7 +57,7 @@ const UserCard = ({ userProfile, onMessageCreated }) => {
       </div>
 
       <CreateMessageModal
-        toUser={userProfile.user}
+        toUser={userProfile}
         active={showCreateModal}
         setActive={setShowCreateModal}
         onMessageCreated={onMessageCreated}

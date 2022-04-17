@@ -32,6 +32,10 @@ const InboxPage = () => {
 
   }, []);
 
+  let recipient;
+
+
+
   return (
     <Page>
       <section>
@@ -52,6 +56,7 @@ const InboxPage = () => {
 
                   {
                     thread.reciever.username == username ? (
+
                       <AuthorBox
                         avatarSrc={getImageUrl(thread.sender.profile_pic)}
                         url={`/profile/${thread.sender.username}`}
@@ -59,6 +64,7 @@ const InboxPage = () => {
                         handle={thread.sender.username}
                         size="md"
                       />
+
                     ) :
                       <AuthorBox
                         avatarSrc={getImageUrl(thread.reciever.profile_pic)}
@@ -75,9 +81,17 @@ const InboxPage = () => {
                 </div>
                 <p className="searchItem__bottom">{thread.last_message.body}</p>
                 <Link
-                  to ={`/chatroom/${thread.id}`}
+                  to={
+                    {
+                      pathname: `/chatroom/${thread.id}`,
+                      state:thread.reciever.username == username ?(thread.sender):(
+                        thread.reciever
+                      )
+                    }
+                  }
+
                 >
-                <Button text="Join" />
+                  <Button text="Join" />
                 </Link>
               </div>
             </div>
