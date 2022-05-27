@@ -1,4 +1,4 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of nodejs 
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of nodejs
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
@@ -32,23 +32,23 @@ jobs:
 
       - name: Running ESLint Linter
         run: npm run lint --if-present
-        working-directory: ./frontend
+        working-directory: .
 
       - name: Running Stylelint
         run: npm run stylelint --if-present
-        working-directory: ./frontend
+        working-directory: .
 
       - name: Running Prettier Code Formatter
         run: npm run format:check --if-present
-        working-directory: ./frontend
+        working-directory: .
 
       - name: Performing React build
         run: npm run build --if-present
-        working-directory: ./frontend
+        working-directory: .
 
       - name: Performing React tests if any defined
         run: npm test
-        working-directory: ./frontend
+        working-directory: .
 
       # - name: Cypress run
       #   uses: cypress-io/github-action@v2
