@@ -28,7 +28,7 @@ jobs:
 
       - name: Installing node dependencies
         run: npm ci
-        working-directory: ./frontend
+        working-directory: .
 
       - name: Running ESLint Linter
         run: npm run lint --if-present
