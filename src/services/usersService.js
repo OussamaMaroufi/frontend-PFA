@@ -1,4 +1,4 @@
-import { get, getApiUrl, post, patch } from './config';
+import { get, getApiUrl, post, patch,put } from './config';
 
 const getRecommendedUsers = () => get({ url: getApiUrl(`api/users/recommended/`) });
 
@@ -17,6 +17,11 @@ const getUserArticles = (username) => get({ url: getApiUrl(`api/users/${username
 const getFollowing = () => get({ url: getApiUrl(`api/users/following/`) });
 const getProfile = () => get({ url: getApiUrl(`api/users/profile/`) });
 
+const updateUserResume = (formData)=>{
+  console.log("Resume formdara",formData);
+  put({ url: getApiUrl(`api/users/update-resume/`),formData })
+}
+
 const updateUserProfileSkills = (skills) =>
   patch({
     url: getApiUrl(`api/users/profile_update/skills/`),
@@ -28,11 +33,13 @@ const updateUserProfile = (userData) =>
     url: getApiUrl(`api/users/profile_update/`),
     payload: userData,
   });
-const updateUserProfilePic = (formData) =>
+const updateUserProfilePic = (formData) =>{
+  console.log("profilepic formdara",formData);
   patch({
     url: getApiUrl('api/users/profile_update/photo/'),
     payload: formData,
-  });
+  })};
+  
 const getUsersBySkill = (skill, page = 1) =>
   get({
     url: getApiUrl(`api/users/skills/${skill}?page=${page}`),
@@ -52,5 +59,6 @@ const usersService = {
   updateUserProfileSkills,
   getProfile,
   getFollowing,
+  updateUserResume
 };
 export default usersService;

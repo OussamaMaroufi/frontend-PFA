@@ -9,7 +9,7 @@ const TextArea = ({
   hideLabel = false,
   label = '',
   name,
-  placeholder = 'Share you mumble thoughts...',
+  placeholder = 'Share you thoughts...',
   value = '',
   ...others
 }) => {

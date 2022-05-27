@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { resetSearchArticles, searchArticles } from '../actions/articleActions';
 
 import '../styles/components/SearchBox.css';
+import { AuthorBox } from "../common"
+import { getImageUrl } from '../utilities/getImageUrl';
 
 const SearchByArticlesList = () => {
   const dispatch = useDispatch();
@@ -28,7 +30,16 @@ const SearchByArticlesList = () => {
           <div className="card__body">
             <div className="article-item">
               <Link to={`/article/${article.id}`}>
-                <img alt="" className="avatar--md" src={article.thumbnail} />
+
+                <AuthorBox
+                  avatarSrc={getImageUrl(article.user.profile_pic)}
+                  name={article.user.name}
+                  handle={article.user.username}
+                  url={`/profile/${article.user.username}`}
+                  size="sm"
+                />
+
+                {/*<img alt="" className="avatar--md" src={article.thumbnail} />*/}
                 <div>
                   <strong>{article.title}</strong>
                 </div>

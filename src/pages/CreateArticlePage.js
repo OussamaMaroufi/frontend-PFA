@@ -49,7 +49,7 @@ const CreateArticlePage = () => {
                 error={errors.title && 'Title is required'}
               />
               <CKEditor
-                config={{ placeholder: 'Share your mumble thoughts...' }}
+                config={{ placeholder: 'Share your  thoughts...' }}
                 editor={ClassicEditor}
                 data={form.content}
                 onChange={(e, editor) => {

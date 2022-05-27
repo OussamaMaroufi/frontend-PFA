@@ -32,7 +32,7 @@ const ArticlePage = ({ match }) => {
               ))} */}
             </div>
             <div className="line-break"></div>
-            <p dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(article.content)}}></p>
+            <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content) }}></p>
           </div>
         </div>
       </section>
